@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tejaswi Bika | Digital Portfolio</title>
+
+        <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #050510;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #7c3cff;
+      filter: blur(180px);
+      opacity: 0.25;
+      top: -150px;
+      left: -150px;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      background: #00eaff;
+      filter: blur(180px);
+      opacity: 0.18;
+      bottom: -150px;
+      right: -100px;
+      z-index: -2;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 5, 16, 0.65);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+      text-shadow: 0 0 12px #00eaff;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 50px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h3 {
+      color: #00eaff;
+      letter-spacing: 4px;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 9vw, 100px);
+      line-height: 1;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff, #00eaff, #a855f7, #fff);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 5s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0%; }
+      100% { background-position: 300%; }
+    }
+
+    .hero p {
+      color: #b8b8c8;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      border: 1px solid #00eaff;
+      border-radius: 50px;
+      color: #00eaff;
+      text-decoration: none;
+      margin: 7px;
+      transition: 0.4s;
+      box-shadow: 0 0 15px rgba(0,234,255,0.2);
+    }
+
+    .btn:hover {
+      background: #00eaff;
+      color: #050510;
+      box-shadow: 0 0 30px #00eaff;
+      transform: translateY(-4px);
+    }
+
+    .btn-purple {
+      border-color: #a855f7;
+      color: #a855f7;
+    }
+
+    .btn-purple:hover {
+      background: #a855f7;
+      color: white;
+      box-shadow: 0 0 30px #a855f7;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      color: #fff;
+    }
+
+    .section-title span {
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff;
+    }
+
+    /* About */
+    .about {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: #b8b8c8;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .skill {
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid rgba(0,234,255,0.2);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      transition: 0.4s;
+    }
+
+    .skill:hover {
+      transform: translateY(-10px) scale(1.03);
+      border-color: #00eaff;
+      box-shadow: 0 0 30px rgba(0,234,255,0.25);
+    }
+
+    .skill h3 {
+      color: #00eaff;
+      margin-bottom: 10px;
+    }
+
+    .skill p {
+      color: #aaa;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      position: relative;
+      padding: 35px 25px;
+      min-height: 230px;
+      border-radius: 20px;
+      background: linear-gradient(
+        145deg,
+        rgba(0,234,255,0.08),
+        rgba(168,85,247,0.08)
+      );
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      transition: 0.4s;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #00eaff;
+      filter: blur(80px);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+      border-color: #a855f7;
+      box-shadow: 0 0 35px rgba(168,85,247,0.2);
+    }
+
+    .project:hover::before {
+      opacity: 0.3;
+    }
+
+    .project h3 {
+      color: #00eaff;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    .project p {
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    /* Contact */
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      padding: 45px 25px;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,234,255,0.2);
+      box-shadow: 0 0 40px rgba(0,234,255,0.08);
+    }
+
+    .contact-box p {
+      color: #aaa;
+      margin: 15px 0 25px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer span {
+      color: #00eaff;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        font-size: 55px;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+    }
+  </style>
+    </head>
+
+    <body>
+
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">TB.</div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+
+                <h3>WELCOME TO MY PORTFOLIO</h3>
+
+                <h1>TEJASWI BIKA</h1>
+
+                <p>
+                    Creative • Passionate • Future Ready
+                    <br>
+                    Welcome to my digital world where ideas turn into beautiful
+                    experiences.
+                </p>
+
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-purple">Contact Me</a>
+
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+
+            <div class="section-title">
+                <h2>About <span>Me</span></h2>
+            </div>
+
+            <div class="about">
+                <p>
+                    Hello! I'm <strong>Tejaswi Bika</strong>.
+                    I am passionate about creativity, technology and learning
+                    new things.
+                    This portfolio represents my skills, projects and digital
+                    journey.
+                    I love creating modern, attractive and interactive digital
+                    experiences.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+
+            <div class="section-title">
+                <h2>My <span>Skills</span></h2>
+            </div>
+
+            <div class="skills">
+
+                <div class="skill">
+                    <h3>HTML</h3>
+                    <p>Web Structure</p>
+                </div>
+
+                <div class="skill">
+                    <h3>CSS</h3>
+                    <p>Creative Designs</p>
+                </div>
+
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <p>Interactive Websites</p>
+                </div>
+
+                <div class="skill">
+                    <h3>UI Design</h3>
+                    <p>Modern Interfaces</p>
+                </div>
+
+                <div class="skill">
+                    <h3>Creativity</h3>
+                    <p>Unique Ideas</p>
+                </div>
+
+                <div class="skill">
+                    <h3>Communication</h3>
+                    <p>Clear & Effective</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+
+            <div class="section-title">
+                <h2>My <span>Projects</span></h2>
+            </div>
+
+            <div class="projects">
+
+                <div class="project">
+                    <h3>01 — Portfolio Website</h3>
+                    <p>
+                        A modern personal portfolio website with animations,
+                        neon effects and responsive design.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h3>02 — Creative Project</h3>
+                    <p>
+                        A creative digital project designed to showcase
+                        ideas, skills and innovation.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h3>03 — Future Project</h3>
+                    <p>
+                        Something exciting is coming soon.
+                        Stay connected to see my upcoming work.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+
+            <div class="section-title">
+                <h2>Contact <span>Me</span></h2>
+            </div>
+
+            <div class="contact-box">
+
+                <h2>Let's Create Something Amazing ✨</h2>
+
+                <p>
+                    Have an idea or want to connect?
+                    Feel free to reach out.
+                </p>
+
+                <a href="mailto:yourmail@example.com" class="btn">
+                    Email Me
+                </a>
+
+                <a href="#" class="btn btn-purple">
+                    Instagram
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            © 2026 <span>Tejaswi Bika</span> | Digital Portfolio
+        </footer>
+
+    </body>
+</html>
