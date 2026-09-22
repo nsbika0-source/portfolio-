@@ -90,6 +90,13 @@
       font-family: inherit;
     }
 
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+
     .container {
       width: min(1150px, 90%);
       margin: auto;
@@ -417,7 +424,8 @@
       }
     }
 
-    .profile-box {
+    .profile-box,
+    .profile-placeholder {
       height: 285px;
       display: grid;
       place-items: center;
@@ -431,6 +439,15 @@
       border: 1px dashed rgba(255, 255, 255, 0.25);
       margin-bottom: 23px;
       overflow: hidden;
+    }
+
+
+    .profile-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
     }
 
     /*
@@ -950,7 +967,8 @@
           T<span>B.</span>
         </a>
 
-        <button class="nav-toggle" id="navToggle">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"
+          aria-expanded="false" type="button">
           <i class="fa-solid fa-bars"></i>
         </button>
 
@@ -1206,7 +1224,7 @@
                 <span>Bootstrap</span>
               </div>
 
-              <a href="#" class="project-link">
+              <a href="#contact" class="project-link">
                 View Project
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
@@ -1232,7 +1250,7 @@
                 <span>HTML/CSS</span>
               </div>
 
-              <a href="#" class="project-link">
+              <a href="#contact" class="project-link">
                 View Project
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
@@ -1258,7 +1276,7 @@
                 <span>MySQL</span>
               </div>
 
-              <a href="#" class="project-link">
+              <a href="#contact" class="project-link">
                 View Project
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
@@ -1336,34 +1354,37 @@
 
             <!-- Email Me -->
             <a
-              href="mailto:yourmail@example.com"
+              href="mailto:tejaswibika@example.com"
               class="btn btn-primary">
               <i class="fa-regular fa-envelope"></i>
               Email Me
             </a>
 
-            <!-- Social Links -->
-            <div class="social-links">
-              <!-- GitHub -->
+            <!-- Social Links: GitHub and LinkedIn only -->
+            <div class="social-links" aria-label="Social links">
               <a
                 href="https://github.com/nsbika0-source"
                 target="_blank"
-                rel="noopener noreferrer">
-                <i class="fab fa-github"></i>
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
               </a>
-              <!-- LinkedIn -->
+
               <a
                 href="https://www.linkedin.com/in/tejaswi-bika-716542409/"
                 target="_blank"
-                rel="noopener noreferrer">
-                <i class="fab fa-linkedin-in"></i>
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
               </a>
-
             </div>
 
           </div>
         </div>
       </section>
+
       <!-- FOOTER -->
       <footer>
         <div class="container">
@@ -1391,6 +1412,7 @@
     navToggle.addEventListener("click", () => {
 
       navLinks.classList.toggle("active");
+      navToggle.setAttribute("aria-expanded", navLinks.classList.contains("active"));
 
       const icon = navToggle.querySelector("i");
 
@@ -1406,6 +1428,7 @@
       link.addEventListener("click", () => {
 
         navLinks.classList.remove("active");
+        navToggle.setAttribute("aria-expanded", "false");
 
         const icon = navToggle.querySelector("i");
 
