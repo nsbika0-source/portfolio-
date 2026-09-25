@@ -1,316 +1,349 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Tejaswi Bika | B.A. English Student and aspiring Python & Django Developer">
   <title>Tejaswi Bika | Python & Django Developer</title>
-
-  <meta name="description" content="Tejaswi Bika - Python and Django Developer Portfolio">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #070b17;
+      --bg-soft: #0d1426;
+      --card: rgba(18, 28, 51, 0.72);
+      --card-solid: #111b31;
+      --text: #f7f9ff;
+      --muted: #a8b3c9;
+      --cyan: #38e8ff;
+      --purple: #a875ff;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 24px 80px rgba(0,0,0,.32);
+      --radius: 24px;
+    }
 
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56,232,255,.13), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(168,117,255,.14), transparent 30%),
+        var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-/* =========================================
-   PREMIUM DARK AESTHETIC ENHANCEMENT
-========================================= */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
 
-:root {
-  --premium-bg: #060816;
-  --premium-cyan: #00eaff;
-  --premium-purple: #a855f7;
-  --premium-glass: rgba(15, 23, 48, 0.62);
-  --premium-border: rgba(148, 163, 184, 0.18);
-}
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1160px, 92%); margin: auto; }
+    .gradient-text {
+      background: linear-gradient(100deg, var(--cyan), #7dbbff 48%, var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-/* Premium background */
-body {
-  background:
-    radial-gradient(
-      circle at 10% 10%,
-      rgba(0, 234, 255, 0.10),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 20%,
-      rgba(168, 85, 247, 0.12),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
-      rgba(0, 234, 255, 0.06),
-      transparent 35%
-    ),
-    var(--premium-bg);
-}
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7,11,23,.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
 
-/* Subtle grid background */
-.hero,
-.section {
-  position: relative;
-  isolation: isolate;
-}
+    .nav-content {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-.hero::before,
-.section::before {
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    );
-  background-size: 45px 45px;
-  opacity: 0.35;
-  pointer-events: none;
-}
+    .logo {
+      font: 800 1.7rem "Space Grotesk", sans-serif;
+      letter-spacing: -1px;
+    }
+    .logo span { color: var(--cyan); }
 
-/* Glassmorphism cards */
-.about-card,
-.skill-card,
-.project-card,
-.stat-card,
-.profile-card,
-.contact-card {
-  background: linear-gradient(
-    135deg,
-    rgba(21, 32, 61, 0.78),
-    rgba(9, 15, 35, 0.72)
-  );
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: var(--card);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
 
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+    .hero { padding: 155px 0 75px; min-height: 100vh; display: grid; align-items: center; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 70px;
+    }
 
-  border: 1px solid rgba(148, 163, 184, 0.20);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    .eyebrow, .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #46f5a8;
+      box-shadow: 0 0 18px #46f5a8;
+    }
 
-/* Glowing card hover */
-.about-card:hover,
-.skill-card:hover,
-.project-card:hover,
-.stat-card:hover {
-  transform: translateY(-8px);
+    h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; line-height: 1.15; }
+    h1 { margin: 22px 0; font-size: clamp(3.2rem, 7vw, 6.5rem); letter-spacing: -5px; }
+    .hero-role { font-size: clamp(1.2rem, 2vw, 1.7rem); color: #dce7ff; margin-bottom: 22px; }
+    .hero-description { max-width: 600px; color: var(--muted); font-size: 1.02rem; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
 
-  border-color: rgba(0, 234, 255, 0.48);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 12px;
+      padding: 13px 20px;
+      font-weight: 800;
+      font-size: .9rem;
+      border: 1px solid transparent;
+      transition: .3s ease;
+    }
+    .btn-primary {
+      color: #06101d;
+      background: linear-gradient(100deg, var(--cyan), #82c9ff);
+      box-shadow: 0 12px 32px rgba(56,232,255,.13);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(56,232,255,.25); }
+    .btn-outline { border-color: var(--line); color: var(--text); background: rgba(255,255,255,.025); }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-3px); }
 
-  box-shadow:
-    0 15px 45px rgba(0, 234, 255, 0.08),
-    0 0 25px rgba(168, 85, 247, 0.06);
-}
+    .profile-area { position: relative; display: grid; place-items: center; }
+    .profile-card {
+      position: relative;
+      width: min(390px, 100%);
+      padding: 14px;
+      border: 1px solid rgba(56,232,255,.28);
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(26,42,75,.9), rgba(12,19,38,.85));
+      box-shadow: var(--shadow), 0 0 70px rgba(56,232,255,.08);
+    }
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      border-radius: 34px;
+      background: linear-gradient(135deg, var(--cyan), transparent 35%, transparent 65%, var(--purple));
+      opacity: .7;
+    }
+    .profile-image-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 23px;
+      aspect-ratio: 4 / 4.6;
+      background: #18243d;
+    }
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .profile-card:hover .profile-image { transform: scale(1.04); }
+    .profile-badge {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 8px 13px;
+      border: 1px solid rgba(56,232,255,.4);
+      border-radius: 999px;
+      background: rgba(7,11,23,.78);
+      color: var(--cyan);
+      font-size: .75rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+    .profile-details { padding: 20px 8px 8px; }
+    .profile-details h3 { font-size: 1.45rem; margin-bottom: 7px; }
+    .profile-details p { color: var(--muted); font-size: .9rem; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+    .tech-tags span, .project-tags span {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #cbd8f0;
+      font-size: .72rem;
+      background: rgba(255,255,255,.035);
+    }
 
-/* Premium navbar */
-.navbar {
-  background: rgba(6, 8, 22, 0.78);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 70px; }
+    .stat-card, .glass-card, .skill-card, .project-card, .contact-card, .experience-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 18px 55px rgba(0,0,0,.16);
+      backdrop-filter: blur(18px);
+    }
+    .stat-card { padding: 24px; text-align: center; }
+    .stat-card h3 { color: var(--cyan); font-size: 1.4rem; }
+    .stat-card p { color: var(--muted); font-size: .8rem; margin-top: 4px; }
 
-  border-bottom: 1px solid rgba(0, 234, 255, 0.12);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
+    .section { padding: 110px 0; }
+    .section-heading { max-width: 700px; margin-bottom: 45px; }
+    .section-title { font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 15px 0; letter-spacing: -1.5px; }
+    .section-subtitle { color: var(--muted); max-width: 620px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+    .glass-card { padding: 34px; }
+    .glass-card h3 { font-size: 1.7rem; margin-bottom: 18px; }
+    .glass-card p { color: var(--muted); margin-bottom: 18px; }
+    .about-list { display: grid; gap: 22px; }
+    .about-item { display: flex; gap: 16px; }
+    .about-icon {
+      flex: 0 0 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--cyan);
+      background: rgba(56,232,255,.09);
+      border: 1px solid rgba(56,232,255,.18);
+      font-weight: 800;
+    }
+    .about-item h4 { font-size: 1.05rem; margin-bottom: 4px; }
+    .about-item p { margin: 0; font-size: .88rem; }
 
-/* Logo glow */
-.logo {
-  text-shadow: 0 0 22px rgba(0, 234, 255, 0.20);
-}
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+    .skill-card { padding: 27px 18px; text-align: center; transition: .3s ease; }
+    .skill-card:hover, .project-card:hover, .stat-card:hover { transform: translateY(-7px); border-color: rgba(56,232,255,.45); }
+    .skill-icon { font-size: 2.1rem; margin-bottom: 12px; }
+    .skill-card h3 { font-size: 1.05rem; }
+    .skill-card p { color: var(--muted); font-size: .8rem; margin-top: 5px; }
 
-.logo span {
-  color: var(--premium-cyan);
-  text-shadow: 0 0 18px rgba(0, 234, 255, 0.65);
-}
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .project-card { padding: 30px; position: relative; overflow: hidden; transition: .3s ease; }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+    .project-top { display: flex; justify-content: space-between; color: var(--cyan); font-size: .75rem; font-weight: 800; letter-spacing: 1px; }
+    .project-card h3 { font-size: 1.55rem; margin: 22px 0 14px; }
+    .project-card p { color: var(--muted); font-size: .92rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .small-btn { border: 1px solid var(--line); border-radius: 10px; padding: 9px 13px; font-size: .78rem; font-weight: 800; transition: .25s ease; }
+    .small-btn:hover { border-color: var(--cyan); color: var(--cyan); }
 
-/* Premium profile card */
-.profile-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 30px;
-}
+    .experience-card { padding: 35px; border-left: 3px solid var(--cyan); }
+    .experience-date { color: var(--cyan); font-size: .78rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 15px; }
+    .experience-card h3 { font-size: 1.7rem; margin-bottom: 14px; }
+    .experience-card p { color: var(--muted); max-width: 800px; }
 
-.profile-card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
+    .contact-card { padding: 50px; text-align: center; }
+    .contact-card h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 18px 0; }
+    .contact-card p { max-width: 650px; margin: auto; color: var(--muted); }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .contact-link { padding: 12px 17px; border: 1px solid var(--line); border-radius: 12px; font-weight: 700; font-size: .85rem; transition: .25s ease; }
+    .contact-link:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-3px); }
 
-  background: linear-gradient(
-    135deg,
-    rgba(0, 234, 255, 0.65),
-    transparent 35%,
-    transparent 65%,
-    rgba(168, 85, 247, 0.65)
-  );
+    footer { padding: 30px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .85rem; }
+    footer strong { color: var(--text); }
 
-  border-radius: 32px;
-  z-index: -1;
-  opacity: 0.65;
-}
+    .reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* Profile image glow and zoom */
-.profile-image-wrap {
-  border: 1px solid rgba(0, 234, 255, 0.22);
-  box-shadow: 0 0 35px rgba(0, 234, 255, 0.08);
-}
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 45px; }
+      .hero-content { text-align: center; }
+      .hero-description { margin: auto; }
+      .hero-buttons { justify-content: center; }
+      .profile-area { max-width: 430px; width: 100%; margin: auto; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 15px; }
+    }
 
-.profile-image {
-  transition: transform 0.6s ease;
-}
+    @media (max-width: 650px) {
+      .nav-content { min-height: 70px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 4%;
+        right: 4%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #0c1427;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 8px 5px; }
+      .hero { padding-top: 125px; }
+      h1 { font-size: 3.6rem; letter-spacing: -2px; }
+      .stats, .projects-grid { grid-template-columns: 1fr; }
+      .section { padding: 75px 0; }
+      .glass-card, .project-card, .experience-card, .contact-card { padding: 25px; }
+      .skills-grid { gap: 12px; }
+      .skill-card { padding: 22px 10px; }
+    }
 
-.profile-card:hover .profile-image {
-  transform: scale(1.04);
-}
-
-/* Profile badge */
-.profile-badge {
-  border: 1px solid rgba(0, 234, 255, 0.35);
-  box-shadow: 0 0 20px rgba(0, 234, 255, 0.10);
-}
-
-/* Gradient heading */
-.hero h1 {
-  text-shadow: 0 0 45px rgba(0, 234, 255, 0.08);
-}
-
-.gradient-text {
-  background: linear-gradient(
-    100deg,
-    #00eaff 0%,
-    #60a5fa 45%,
-    #c084fc 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Premium buttons */
-.btn-primary {
-  background: linear-gradient(
-    100deg,
-    #00eaff,
-    #38bdf8
-  );
-
-  box-shadow:
-    0 0 20px rgba(0, 234, 255, 0.14),
-    0 8px 25px rgba(0, 234, 255, 0.10);
-}
-
-.btn-primary:hover {
-  box-shadow:
-    0 0 30px rgba(0, 234, 255, 0.32),
-    0 12px 35px rgba(0, 234, 255, 0.18);
-}
-
-.btn-outline:hover {
-  box-shadow: 0 0 22px rgba(0, 234, 255, 0.10);
-}
-
-/* Skill icon glow */
-.skill-icon {
-  filter: drop-shadow(0 0 10px rgba(0, 234, 255, 0.12));
-}
-
-/* Section titles */
-.section-title {
-  text-shadow: 0 0 25px rgba(168, 85, 247, 0.08);
-}
-
-.section-label {
-  text-shadow: 0 0 15px rgba(0, 234, 255, 0.30);
-}
-
-/* Project card top accent */
-.project-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #00eaff,
-    #a855f7,
-    transparent
-  );
-
-  opacity: 0.65;
-}
-
-/* Contact section glow */
-.contact-card {
-  position: relative;
-  overflow: hidden;
-
-  box-shadow:
-    0 20px 80px rgba(0, 0, 0, 0.25),
-    0 0 45px rgba(168, 85, 247, 0.05);
-}
-
-/* Smooth focus accessibility */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--premium-cyan);
-  outline-offset: 5px;
-}
-
-/* Mobile premium adjustments */
-@media (max-width: 650px) {
-  .profile-card {
-    border-radius: 24px;
-  }
-
-  .about-card,
-  .skill-card,
-  .project-card {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-}
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
   <header class="navbar">
     <div class="container nav-content">
-
-      <a href="#home" class="logo">
-        TB<span>.</span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        ☰
-      </button>
-
+      <a href="#home" class="logo">TB<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks">
         <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
@@ -319,628 +352,239 @@ button:focus-visible {
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
-
     </div>
   </header>
 
-
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <section class="hero" id="home">
-
-    <div class="container">
-
-      <div class="hero-grid">
-
-        <div class="hero-content reveal">
-
-          <div class="availability">
-            <span class="dot"></span>
-            Available for opportunities
-          </div>
-
-          <h1>
-            <span class="line">Hi, I'm</span>
-            <span class="line gradient-text">Tejaswi</span>
-            <span class="line">Bika<span class="gradient-text">.</span></span>
-          </h1>
-
-          <h2 class="hero-role">
-            Python & Django Developer
-          </h2>
-
-          <p class="hero-description">
-            I create responsive, modern and practical web applications.
-            I enjoy learning new technologies, solving problems and
-            turning ideas into useful digital experiences.
-          </p>
-
-          <div class="hero-buttons">
-
-            <a href="#projects" class="btn btn-primary">
-              View My Work →
-            </a>
-
-            <!-- Replace with your actual CV file name if needed -->
-            <a href="Tejaswi_Bika_Resume.pdf"
-               class="btn btn-primary"
-               download>
-              Download CV ↓
-            </a>
-
-            <a href="#contact" class="btn btn-outline">
-              Contact Me ✉
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- PROFILE PHOTO RIGHT SIDE -->
-
-        <div class="profile-wrapper reveal">
-
-          <div class="profile-glow"></div>
-
-          <div class="profile-card">
-
-            <div class="profile-image-wrap">
-
-              <!-- Your profile photo -->
-              <img
-                src="profile.jpg.jpeg"
-                alt="Tejaswi Bika Profile Photo"
-                class="profile-image"
-              >
-
-              <div class="profile-badge">
-                ✦ Python Developer
-              </div>
-
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <div class="eyebrow">Available for opportunities</div>
+            <h1>Hi, I'm <span class="gradient-text">Tejaswi</span><br>Bika<span class="gradient-text">.</span></h1>
+            <h2 class="hero-role">B.A. English Student & Aspiring Python/Django Developer</h2>
+            <p class="hero-description">
+              I enjoy creating practical projects, improving my programming skills and learning new technologies.
+              My goal is to work in a professional environment where I can contribute, gain experience and continue to grow.
+            </p>
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="#projects">View My Work ↗</a>
+              <a class="btn btn-outline" href="Tejaswi_Bika_Resume.pdf" download>Download CV ↓</a>
+              <a class="btn btn-outline" href="#contact">Contact Me ✉</a>
             </div>
-
-            <div class="profile-details">
-
-              <h3>Tejaswi Bika</h3>
-
-              <p>
-                Focused on Python, Django, web development
-                and continuous learning.
-              </p>
-
-              <div class="tech-tags">
-                <span>Python</span>
-                <span>Django</span>
-                <span>HTML/CSS</span>
-                <span>GitHub</span>
-              </div>
-
-            </div>
-
           </div>
 
+          <div class="profile-area reveal">
+            <div class="profile-card">
+              <div class="profile-image-wrap">
+                <img src="profile.jpg.jpeg" class="profile-image" alt="Tejaswi Bika profile photo">
+                <div class="profile-badge">✦ Python Developer</div>
+              </div>
+              <div class="profile-details">
+                <h3>Tejaswi Bika</h3>
+                <p>Focused on Python, Django, web development and continuous learning.</p>
+                <div class="tech-tags">
+                  <span>Python</span><span>Django</span><span>HTML/CSS</span><span>Git</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <div class="stats reveal">
+          <div class="stat-card"><h3>Python</h3><p>Programming Language</p></div>
+          <div class="stat-card"><h3>Django</h3><p>Web Framework</p></div>
+          <div class="stat-card"><h3>Web</h3><p>Responsive Projects</p></div>
+        </div>
       </div>
+    </section>
 
-
-      <!-- STATS -->
-
-      <div class="stats reveal">
-
-        <div class="stat-card">
-          <h3>Python</h3>
-          <p>Programming Language</p>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Building with <span class="gradient-text">Purpose.</span></h2>
+          <p class="section-subtitle">A short introduction to my learning journey and development interests.</p>
         </div>
 
-        <div class="stat-card">
-          <h3>Django</h3>
-          <p>Web Development</p>
-        </div>
+        <div class="about-grid">
+          <div class="glass-card reveal">
+            <h3>Passionate about learning and creating.</h3>
+            <p>
+              Hello! I'm Tejaswi Bika, a B.A. English student and aspiring Python & Django Developer.
+            </p>
+            <p>
+              I enjoy creating practical projects, improving my programming skills and learning new technologies.
+              I want to contribute my skills in a professional environment and keep growing as a developer.
+            </p>
+            <a class="btn btn-primary" href="#contact">Let's Connect →</a>
+          </div>
 
-        <div class="stat-card">
-          <h3>Web</h3>
-          <p>Responsive Projects</p>
+          <div class="glass-card reveal">
+            <div class="about-list">
+              <div class="about-item">
+                <div class="about-icon">01</div>
+                <div><h4>Problem Solving</h4><p>Learning programming concepts and building practical solutions.</p></div>
+              </div>
+              <div class="about-item">
+                <div class="about-icon">02</div>
+                <div><h4>Web Development</h4><p>Exploring frontend development and Django-based applications.</p></div>
+              </div>
+              <div class="about-item">
+                <div class="about-icon">03</div>
+                <div><h4>Continuous Learning</h4><p>Improving technical skills through projects and practice.</p></div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
+    </section>
 
-    </div>
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">My Skills</span>
+          <h2 class="section-title">Technologies I <span class="gradient-text">Explore.</span></h2>
+          <p class="section-subtitle">Tools and technologies I am learning and using in my development journey.</p>
+        </div>
 
-  </section>
+        <div class="skills-grid">
+          <div class="skill-card reveal"><div class="skill-icon">🐍</div><h3>Python</h3><p>Programming</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">⚙️</div><h3>Django</h3><p>Web Framework</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">🌐</div><h3>HTML</h3><p>Web Structure</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">🎨</div><h3>CSS</h3><p>Web Styling</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">📜</div><h3>JavaScript</h3><p>Interactivity</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">🗄️</div><h3>SQL</h3><p>Database Basics</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">🔧</div><h3>Git</h3><p>Version Control</p></div>
+          <div class="skill-card reveal"><div class="skill-icon">💻</div><h3>C / C++</h3><p>Programming Basics</p></div>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">My Work</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects.</span></h2>
+          <p class="section-subtitle">Projects created during my learning journey.</p>
+        </div>
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-top"><span>01 / PROJECT</span><span>↗</span></div>
+            <h3>Student Registration System</h3>
+            <p>A Django-based student management application with registration, update, delete, student listing and image upload functionality.</p>
+            <div class="project-tags"><span>Python</span><span>Django</span><span>HTML</span><span>Bootstrap</span></div>
+            <div class="project-actions">
+              <a class="small-btn" href="https://github.com/nsbika0-source" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a class="small-btn" href="#contact">Details →</a>
+            </div>
+          </article>
 
-  <section class="section" id="about">
+          <article class="project-card reveal">
+            <div class="project-top"><span>02 / PROJECT</span><span>↗</span></div>
+            <h3>NovaCart E-Commerce</h3>
+            <p>An online shopping website with product listings, cart functionality, checkout and order management, built as a practical Django project.</p>
+            <div class="project-tags"><span>Django</span><span>Python</span><span>HTML/CSS</span><span>Database</span></div>
+            <div class="project-actions">
+              <a class="small-btn" href="https://github.com/nsbika0-source" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a class="small-btn" href="#contact">Details →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div class="container">
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">My Journey</span>
+          <h2 class="section-title">Learning & <span class="gradient-text">Experience.</span></h2>
+          <p class="section-subtitle">My journey of building skills and working on practical projects.</p>
+        </div>
 
-      <span class="section-label">About Me</span>
-
-      <h2 class="section-title">
-        Building with <span class="gradient-text">Purpose.</span>
-      </h2>
-
-      <p class="section-subtitle">
-        A little about my learning journey and development interests.
-      </p>
-
-      <div class="about-grid">
-
-        <div class="about-content reveal">
-
-          <h3>
-            Passionate about learning and creating.
-          </h3>
-
+        <div class="experience-card reveal">
+          <div class="experience-date">LEARNING JOURNEY</div>
+          <h3>Python & Django Development</h3>
           <p>
-            Hello! I'm Tejaswi Bika, a BCA student and
-            aspiring Python & Django Developer.
+            Learning Python programming, Django web development, frontend technologies and project development.
+            Working on practical applications to strengthen my development skills.
           </p>
-
-          <p>
-            I enjoy creating practical projects, improving
-            my programming skills and learning new technologies.
-            My goal is to work in a professional environment
-            where I can contribute my skills and continue to grow.
-          </p>
-
-          <a href="#contact" class="btn btn-primary">
-            Let's Connect →
-          </a>
-
         </div>
-
-        <div class="about-card reveal">
-
-          <div class="about-list">
-
-            <div class="about-item">
-
-              <div class="about-icon">01</div>
-
-              <div>
-                <h4>Problem Solving</h4>
-                <p>
-                  Interested in learning programming concepts
-                  and building practical solutions.
-                </p>
-              </div>
-
-            </div>
-
-            <div class="about-item">
-
-              <div class="about-icon">02</div>
-
-              <div>
-                <h4>Web Development</h4>
-                <p>
-                  Exploring frontend development and
-                  Django-based web applications.
-                </p>
-              </div>
-
-            </div>
-
-            <div class="about-item">
-
-              <div class="about-icon">03</div>
-
-              <div>
-                <h4>Continuous Learning</h4>
-                <p>
-                  Improving technical skills through
-                  projects and practice.
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
+    </section>
 
-    </div>
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="section-label">Get In Touch</span>
+          <h2>Let's build something <span class="gradient-text">great.</span></h2>
+          <p>Interested in connecting or discussing a project? Feel free to reach out through my professional profiles.</p>
 
-  </section>
-
-
-  <!-- =========================
-       SKILLS
-  ========================= -->
-
-  <section class="section" id="skills">
-
-    <div class="container">
-
-      <span class="section-label">My Skills</span>
-
-      <h2 class="section-title">
-        Technologies I <span class="gradient-text">Explore.</span>
-      </h2>
-
-      <p class="section-subtitle">
-        Tools and technologies I am learning and using
-        in my development journey.
-      </p>
-
-      <div class="skills-grid">
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">🐍</div>
-          <h3>Python</h3>
-          <p>Programming</p>
+          <div class="contact-links">
+            <!-- Replace the email below with your real email address -->
+            <a class="contact-link" href="mailto:your-email@example.com">✉ Email</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/tejaswi-bika-716542409/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+            <a class="contact-link" href="https://github.com/nsbika0-source" target="_blank" rel="noopener noreferrer">◉ GitHub</a>
+          </div>
         </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">⚙️</div>
-          <h3>Django</h3>
-          <p>Web Framework</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">🌐</div>
-          <h3>HTML</h3>
-          <p>Web Structure</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">🎨</div>
-          <h3>CSS</h3>
-          <p>Web Styling</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">📜</div>
-          <h3>JavaScript</h3>
-          <p>Web Interactivity</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">🗄️</div>
-          <h3>SQL</h3>
-          <p>Database Basics</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">🔧</div>
-          <h3>Git</h3>
-          <p>Version Control</p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">💻</div>
-          <h3>C / C++</h3>
-          <p>Programming Basics</p>
-        </div>
-
       </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       PROJECTS
-  ========================= -->
-
-  <section class="section" id="projects">
-
-    <div class="container">
-
-      <span class="section-label">My Work</span>
-
-      <h2 class="section-title">
-        Featured <span class="gradient-text">Projects.</span>
-      </h2>
-
-      <p class="section-subtitle">
-        A selection of projects created during my learning journey.
-      </p>
-
-      <div class="projects-grid">
-
-        <!-- PROJECT 1 -->
-
-        <article class="project-card reveal">
-
-          <div class="project-top">
-            <span class="project-number">01 / PROJECT</span>
-            <span class="project-link">↗</span>
-          </div>
-
-          <h3>Student Registration System</h3>
-
-          <p>
-            A Django-based student management application
-            with registration, update, delete, student listing
-            and image upload functionality.
-          </p>
-
-          <div class="project-tags">
-            <span>Python</span>
-            <span>Django</span>
-            <span>HTML</span>
-            <span>Bootstrap</span>
-          </div>
-
-          <div class="project-actions">
-
-            <!-- Replace # with your actual GitHub repository URL -->
-            <a href="#" class="small-btn" target="_blank">
-              GitHub ↗
-            </a>
-
-            <a href="#contact" class="small-btn">
-              Details →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 2 -->
-
-        <article class="project-card reveal">
-
-          <div class="project-top">
-            <span class="project-number">02 / PROJECT</span>
-            <span class="project-link">↗</span>
-          </div>
-
-          <h3>NovaCart E-Commerce</h3>
-
-          <p>
-            An online shopping website with product listings,
-            cart functionality, checkout and order management.
-            Built as a practical Django project.
-          </p>
-
-          <div class="project-tags">
-            <span>Django</span>
-            <span>Python</span>
-            <span>HTML/CSS</span>
-            <span>Database</span>
-          </div>
-
-          <div class="project-actions">
-
-            <!-- Replace # with your actual GitHub repository URL -->
-            <a href="#" class="small-btn" target="_blank">
-              GitHub ↗
-            </a>
-
-            <a href="#contact" class="small-btn">
-              Details →
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       EXPERIENCE
-  ========================= -->
-
-  <section class="section" id="experience">
-
-    <div class="container">
-
-      <span class="section-label">My Journey</span>
-
-      <h2 class="section-title">
-        Learning & <span class="gradient-text">Experience.</span>
-      </h2>
-
-      <p class="section-subtitle">
-        My journey of building skills and working on projects.
-      </p>
-
-      <div class="experience-card reveal">
-
-        <div class="experience-date">
-          LEARNING JOURNEY
-        </div>
-
-        <h3>Python & Django Development</h3>
-
-        <p>
-          Learning Python programming, Django web development,
-          frontend technologies and project development.
-          Working on practical applications to strengthen
-          development skills.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <section class="section" id="contact">
-
-    <div class="container">
-
-      <div class="contact-card reveal">
-
-        <span class="section-label">Get In Touch</span>
-
-        <h2>
-          Let's build something <span class="gradient-text">great.</span>
-        </h2>
-
-        <p>
-          Interested in connecting or discussing a project?
-          Feel free to reach out through my social profiles.
-        </p>
-
-        <div class="contact-links">
-
-          <!-- Replace with your actual email -->
-          <a href="mailto:your-email@example.com" class="contact-link">
-            ✉ Email
-          </a>
-
-          <!-- Replace with your actual LinkedIn URL -->
-          <a href="#" class="contact-link" target="_blank">
-            in LinkedIn
-          </a>
-
-          <!-- Replace with your actual GitHub URL -->
-          <a href="https://github.com/nsbika0-source"
-             class="contact-link"
-             target="_blank"
-             rel="noopener noreferrer">
-            ◉ GitHub
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
+    </section>
+  </main>
 
   <footer>
-
     <div class="container">
-
-      <p>
-        © <span id="year"></span>
-        <strong>Tejaswi Bika</strong>.
-        Designed & Built with dedication.
-      </p>
-
+      © <span id="year"></span> <strong>Tejaswi Bika</strong>. Designed & built with dedication.
     </div>
-
   </footer>
 
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
   <script>
-
-    // Mobile Menu
-
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("open");
-
       const isOpen = navLinks.classList.contains("open");
-
-      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-
-    // Close mobile menu after clicking a link
-
     document.querySelectorAll(".nav-links a").forEach(link => {
-
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
       });
-
     });
-
-
-    // Automatic Footer Year
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-
-    // Scroll Reveal Animation
-
     const revealElements = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver((entries) => {
-
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-
         if (entry.isIntersecting) {
-
           entry.target.classList.add("visible");
-
-          revealObserver.unobserve(entry.target);
-
+          observer.unobserve(entry.target);
         }
-
       });
+    }, { threshold: 0.12 });
 
-    }, {
-      threshold: 0.12
-    });
-
-    revealElements.forEach(element => {
-      revealObserver.observe(element);
-    });
-
-
-    // Active Navigation Link
+    revealElements.forEach(element => observer.observe(element));
 
     const sections = document.querySelectorAll("section[id]");
     const navItems = document.querySelectorAll(".nav-links a");
 
     window.addEventListener("scroll", () => {
-
       let currentSection = "";
 
       sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 130;
-
-        if (window.scrollY >= sectionTop) {
-          currentSection = section.getAttribute("id");
+        if (window.scrollY >= section.offsetTop - 150) {
+          currentSection = section.id;
         }
-
       });
 
       navItems.forEach(item => {
-
-        item.classList.remove("active");
-
-        if (item.getAttribute("href") === "#" + currentSection) {
-          item.classList.add("active");
-        }
-
+        item.classList.toggle("active", item.getAttribute("href") === "#" + currentSection);
       });
-
     });
-
   </script>
-
 </body>
 </html>
